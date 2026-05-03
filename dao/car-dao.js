@@ -25,7 +25,6 @@ async function retryOperation(operation, delay, retries) {
   throw error;
 }
 
-// Method to read a car from a file
 function get(carId) {
   try {
     const filePath = path.join(carFolderPath, `${carId}.json`);
@@ -37,7 +36,6 @@ function get(carId) {
   }
 }
 
-// Method to get rides for a car
 function getcarRides(carId) {
   try {
     const filePath = path.join(carFolderPath, `${carId}.json`);
@@ -49,7 +47,6 @@ function getcarRides(carId) {
   }
 }
 
-// Method to create a new car
 function create(car) {
   try {
     car.id = crypto.randomBytes(16).toString("hex");
@@ -63,7 +60,6 @@ function create(car) {
   }
 }
 
-// Method to update an existing car
 function update(car) {
   try {
     const currentCar = get(car.id);
@@ -79,14 +75,12 @@ function update(car) {
   }
 }
 
-// Method to remove a car by its ID
 async function remove(carId) {
   const filePath = path.join(carFolderPath, `${carId}.json`);
   await retryOperation(() => fs.promises.unlink(filePath), 100, 5);
   return {};
 }
 
-// Method to list all cars
 function list() {
   try {
     const files = fs.readdirSync(carFolderPath);

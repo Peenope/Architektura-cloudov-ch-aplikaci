@@ -25,7 +25,6 @@ async function retryOperation(operation, delay, retries) {
   throw error;
 }
 
-// Method to read a ride from a file
 function get(rideId) {
   try {
     const filePath = path.join(rideFolderPath, `${rideId}.json`);
@@ -37,7 +36,6 @@ function get(rideId) {
   }
 }
 
-// Method to create a new ride
 function create(ride) {
   try {
     const id_car = ride.id_car;
@@ -52,7 +50,6 @@ function create(ride) {
   }
 }
 
-// Method to update a ride in a file
 function update(ride) {
   try {
     const currentRide = get(ride.id);
@@ -68,14 +65,12 @@ function update(ride) {
   }
 }
 
-// Method to remove a ride from a file
 async function remove(rideId) {
   const filePath = path.join(rideFolderPath, `${rideId}.json`);
   await retryOperation(() => fs.promises.unlink(filePath), 100, 5);
   return {};
 }
 
-// Method to list rides in a folder
 function list() {
   try {
     const files = fs.readdirSync(rideFolderPath);

@@ -9,7 +9,7 @@ const carDao = require("../../dao/car-dao.js");
 const schema = {
   type: "object",
   properties: {
-    name: { type: "string" }, // Jméno řidiče jako text
+    name: { type: "string" },
     carSPZ: { type: "string" },
     date: { type: "string", format: "date-time" },
     kilometers_start: { type: "number" },

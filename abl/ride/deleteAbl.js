@@ -16,7 +16,6 @@ async function DeleteAbl(req, res) {
   try {
     const reqParams = req.body;
 
-    // Validate input
     const valid = ajv.validate(schema, reqParams);
     if (!valid) {
       return res.status(400).json({

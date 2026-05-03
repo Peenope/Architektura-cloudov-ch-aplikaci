@@ -3,7 +3,6 @@ const cors = require("cors");
 const app = express();
 const port = 8000;
 
-// Necháváme jen ty dvě entity, které vyžaduje zadání
 const rideController = require("./controller/ride");
 const carController = require("./controller/car");
 
@@ -16,7 +15,6 @@ app.get("/", (req, res) => {
   res.send("Backend Vozového parku - Aktivní a bez nutnosti přihlášení");
 });
 
-// Používáme jen povolené cesty[cite: 28, 29]
 app.use("/ride", rideController);
 app.use("/car", carController);
 
